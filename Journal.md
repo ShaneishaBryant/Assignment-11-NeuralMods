@@ -26,6 +26,7 @@ In what scenario would you use a Comparator instead of Comparable? How did you i
 
 You use Comparable when defining a single, default natural order directly inside a class, whereas a Comparator provides flexibility for sorting objects in multiple ways. In our program, we implemented Comparable to sort mods by speed, and used a Comparator via a lambda expression to handle custom sorting by compatibility, which leaves our program open to easily add sorting by other categories like name or status in the future.
 
+To implement the reverse order, I added an overloaded sortRegistry method to the NeuralMod class that accepts a Comparator. In Main, I then used a lambda expression with this method to sort the mods by compatibility.
 
 
 
