@@ -19,11 +19,33 @@ public class NeuralMod implements Comparable<NeuralMod>{
     }
 
 
-    //Implement Comparable Interface - speed (lowest to highest)
+
+
+    //Implement Comparable Interface
     @Override
     public int compareTo(NeuralMod otherMod){
-        return Double.compare(this.speed, otherMod.speed);
+        // Primary Sort: processing speed (lowest to highest)
+        int speedComparison = Double.compare(this.speed, otherMod.speed);
+        if (speedComparison != 0){
+            return speedComparison;
+        }
+
+        //Second Sort Category: compatibility rating (highest to lowest)
+        int compatibilityComparison = Integer.compare(otherMod.compatibility, this.compatibility);
+        if (compatibilityComparison != 0) {
+            return compatibilityComparison;
+        }
+
+        //Third Sort Category: alphabetical by name
+        return this.name.compareTo(otherMod.name);
     }
+
+
+
+
+
+
+
     //method for natural order (speed)
     public static void sortRegistry(){
         Collections.sort(registry);
@@ -56,9 +78,9 @@ public class NeuralMod implements Comparable<NeuralMod>{
     public double getSpeed(){return speed;}
     public int getCompatibility(){return compatibility;}
 
-    public void setName(){this.name = name;}
-    public void setSpeed(){this.speed = speed;}
-    public void setCompatibility(){this.compatibility = compatibility;}
+    public void setName(String name){this.name = name;}
+    public void setSpeed(double speed){this.speed = speed;}
+    public void setCompatibility(int compatibility){this.compatibility = compatibility;}
 
     //toString() method
     @Override
