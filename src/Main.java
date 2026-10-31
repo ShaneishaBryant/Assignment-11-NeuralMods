@@ -10,6 +10,9 @@ public class Main {
         //sort registry automatically by speed
         NeuralMod.sortRegistry();
 
+        //sort using lambda expression by compatibility (highest to lowest)
+        NeuralMod.sortRegistry((m1, m2) -> Integer.compare(m2.getCompatibility(), m1.getCompatibility()));
+
         NeuralMod.printRegistry();
 
 

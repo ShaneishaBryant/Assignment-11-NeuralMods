@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class NeuralMod implements Comparable<NeuralMod>{
     private String name;
@@ -18,17 +19,20 @@ public class NeuralMod implements Comparable<NeuralMod>{
     }
 
 
-
-    //Implement Comparable Interface
+    //Implement Comparable Interface - speed (lowest to highest)
     @Override
     public int compareTo(NeuralMod otherMod){
         return Double.compare(this.speed, otherMod.speed);
     }
-
+    //method for natural order (speed)
     public static void sortRegistry(){
         Collections.sort(registry);
     }
 
+    //method to accept custom comparator - lambda
+    public static void sortRegistry(Comparator<NeuralMod> comparator){
+        registry.sort(comparator);
+    }
 
 
     //Registry Management Method
