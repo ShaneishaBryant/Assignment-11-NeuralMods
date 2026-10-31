@@ -7,17 +7,19 @@ public class NeuralMod implements Comparable<NeuralMod>{
     private double speed;
     private int compatibility;
 
-    //ArrayList to store the list of mods
-    private static ArrayList<NeuralMod> registry = new ArrayList<>();
 
-
-    //constructor
+    //constructor with validation checks to ensure data integrity
     public NeuralMod(String name, double speed, int compatibility){
+        if(speed < 0){
+            throw new IllegalArgumentException("Speed cannot be negative.");
+        }
+        if (compatibility < 0 || compatibility > 100){
+            throw new IllegalArgumentException("Compatibility rating must be between 0 and 100%");
+        }
         this.name = name;
         this.speed = speed;
         this.compatibility = compatibility;
     }
-
 
 
 
@@ -40,38 +42,6 @@ public class NeuralMod implements Comparable<NeuralMod>{
         return this.name.compareTo(otherMod.name);
     }
 
-
-
-
-
-
-
-    //method for natural order (speed)
-    public static void sortRegistry(){
-        Collections.sort(registry);
-    }
-
-    //method to accept custom comparator - lambda
-    public static void sortRegistry(Comparator<NeuralMod> comparator){
-        registry.sort(comparator);
-    }
-
-
-    //Registry Management Method
-    public static void registry(NeuralMod mod){
-        registry.add(mod);
-    }
-
-    public static ArrayList<NeuralMod> getRegistry(){
-        return registry;
-    }
-
-    public static void printRegistry(){
-        System.out.println("====Neural Mods Registry====");
-        for (NeuralMod mod : registry){
-            System.out.println(mod);
-        }
-    }
 
     //getter and setters
     public String getName(){return name;}

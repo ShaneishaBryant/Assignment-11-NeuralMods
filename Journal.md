@@ -39,4 +39,19 @@ Instead of evaluating everything at once the program uses if statements within t
 When the program encounters two mods with the same speed and compatibility:
 1. Runs the speed check, if results are identical (0), then if statement evaluates to false, moves to next statement
 2. Runs the compatibility check,  if results are identical (0), then if statement evaluates to false, moves to next statement
-3. At the last fallback, alphabetical, it compares the two names, determines final sorted position 
+3. At the last fallback, alphabetical, it compares the two names, determines final sorted position.
+
+
+_________________
+
+What bugs or unexpected behaviors did you catch while testing your program? If you asked an AI tutor for feedback, what did it suggest, and did you choose to make any changes? Explain your reasoning.
+
+The only bug that occurred during testing is that the program continued to sort by compatibility only. I realized that the sort using lambda was the last one continuing to run so I had to comment out this line so the multi sort registry could run. 
+
+AI provide the following feedback that I implemented in the program:
+1. Separate Concerns - Move registry list and sort methods into separate class. This follows the Single Responsibility Principle, keeping data model clean and collection management centralized.
+2. Protect Registry List - Encapsulation - Return an unmodifiable view of the list to ensure an external class does not accidentally clear the registry or modify it
+3. Add Input Validation - add validation checks to the constructor and setters to ensure data integrity therefor a negative speed or compatibility score over 100% cannot be passed 
+
+I incorporated these improvements to make the program more robust and maintainable. Since these concepts align closely with lessons from our coursework, applying them was a great way to reinforce and build upon what I’ve learned so far.
+
