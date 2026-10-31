@@ -7,6 +7,11 @@ public class Main {
         NeuralMod.registry(new NeuralMod("Soma-Link", 3.1, 98));
         NeuralMod.registry(new NeuralMod("Pulse-7", 5.8, 60));
 
+        //sort registry automatically by speed
+        NeuralMod.sortRegistry();
+
         NeuralMod.printRegistry();
+
+
     }
 }

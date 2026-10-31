@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class NeuralMod {
+public class NeuralMod implements Comparable<NeuralMod>{
     private String name;
     private double speed;
     private int compatibility;
@@ -15,6 +16,20 @@ public class NeuralMod {
         this.speed = speed;
         this.compatibility = compatibility;
     }
+
+
+
+    //Implement Comparable Interface
+    @Override
+    public int compareTo(NeuralMod otherMod){
+        return Double.compare(this.speed, otherMod.speed);
+    }
+
+    public static void sortRegistry(){
+        Collections.sort(registry);
+    }
+
+
 
     //Registry Management Method
     public static void registry(NeuralMod mod){
